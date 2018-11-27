@@ -1,0 +1,9 @@
+CONFIG SENSOR PIR
+=================
+
+SENSOR
+______
+
+vcc -> - pin 2 5v
+gnd -> - pin 6 gnd 
+out -> - pin 12 GPIO 18

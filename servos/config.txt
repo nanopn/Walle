@@ -1,0 +1,7 @@
+CONFIG 16 DRIVER 
+================
+
+vcc -> - pin 1 3v 
+SDA -> - PIN 3 SDA i2c 
+SCL  - > - PIN PIN 5 i2c SCL 
+GND - >  - Ground

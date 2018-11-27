@@ -1,0 +1,6 @@
+CONFIG DH11 TEMPERATURE
+=======================
+
++ -> - PIN 1 3V
+OUT - > - PING 7 gpio 04
+- -> - pin 09 gnd 

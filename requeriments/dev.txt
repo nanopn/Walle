@@ -1,0 +1,2 @@
+# Voice
+# sudo apt-get install espeak python-espeak

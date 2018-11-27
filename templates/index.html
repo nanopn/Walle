@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Walle</title>
+
+ <style>
+     table {
+        color: #333; /* Lighten up font color */
+        font-family: Helvetica, Arial, sans-serif; /* Nicer font */
+        width: 640px;
+        border-collapse:
+        collapse; border-spacing: 0;
+        }
+
+        td, th { border: 1px solid #CCC; height: 30px; } /* Make cells a bit taller */
+
+        th {
+        background: #F3F3F3; /* Light grey background */
+        font-weight: bold; /* Make sure they're bold */
+        }
+
+        td {
+        background: #FAFAFA; /* Lighter grey background */
+        text-align: center; /* Center our text */
+      }
+
+ </style>
+ <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.1.0.min.js') }}"></script>
+ <script>
+     function set_action(url){
+        $.ajax({
+          url: url,
+        }).done(function() {
+          console.log('set to ' + url);
+        });
+     }
+
+     $(window).keydown(function(e) {
+          switch (e.keyCode) {
+            //MOVES
+            case 37: // left arrow key
+                set_action('/moves/left');
+                e.preventDefault();
+                console.log('press left')
+                return;
+            case 38: // up arrow key
+                set_action('/moves/front');
+                e.preventDefault();
+                console.log('press up')
+                return;
+            case 39: // right arrow key
+                set_action('/moves/right');
+                e.preventDefault();
+                console.log('press right')
+                return;
+            case 40: // up arrow down
+                console.log('press down')
+                 e.preventDefault();
+                 set_action('/moves/back');
+                 return;
+            case 8: // delete
+                console.log('press delete')
+                 e.preventDefault();
+                 set_action('/moves/stop');
+                 return;
+
+            //HEAD
+            case 84: // press t
+                set_action('/head/up_manual/');
+                e.preventDefault();
+                console.log('press t')
+                return;
+            case 66: // press b
+                set_action('/head/down_manual/');
+                e.preventDefault();
+                console.log('press b')
+                return;
+            case 70: // press f
+                set_action('/head/left_manual/');
+                e.preventDefault();
+                console.log('press f')
+                return;
+            case 71: // press g
+                set_action('/head/off/');
+                e.preventDefault();
+                console.log('press g')
+                return;
+            case 72: // press h
+                set_action('/head/right_manual/');
+                e.preventDefault();
+                console.log('press h')
+                return;
+
+            //HAND LEFT
+            case 87: // press w
+                set_action('/hang_left/up_manual/');
+                e.preventDefault();
+                console.log('press w')
+                return;
+            case 88: // press x
+                set_action('/hang_left/down_manual/');
+                e.preventDefault();
+                console.log('press x')
+                return;
+            case 68: // press a
+                set_action('/hang_left/up_elbow_manual/');
+                e.preventDefault();
+                console.log('press a')
+                return;
+            case 65: // press d
+                set_action('/hang_left/down_elbow_manual/');
+                e.preventDefault();
+                console.log('press d')
+                return;
+
+            //Amenities
+            case 49: // press 1
+                set_action('/actions/foto/');
+                e.preventDefault();
+                console.log('press 1')
+                return;
+          }
+        });
+ </script>
+</head>
+<body>
+{{ msg }}
+<table>
+    <tr>
+        <td>MOVES </td>
+    </tr>
+    <tr>
+        <td>
+           <table>
+               <tr>
+                   <td></td><td><a href="/moves/front/">FRONT</a></td><td></td>
+               </tr>
+               <tr>
+                   <td><a href="/moves/left/">LEFT</a></td><td><a href="/moves/stop/">STOP</a></td><td><a href="/moves/right/">RIGHT</a></td>
+               </tr>
+               <tr>
+                   <td></td><td><a href="/moves/back/">BACK</a></td><td></td>
+               </tr>
+           </table>
+        </td>
+    </tr>
+    <tr>
+        <td>left hand </td>
+    </tr>
+    <tr>
+        <td>
+           <table>
+               <tr>
+                   <td></td><td><a href="/hang_left/up/">UP</a></td><td></td>
+               </tr>
+               <tr>
+                   <td><a href="/hang_left/left/">LEFT</a></td><td><a href="/hang_left/center/">CENTER</a></td><td><a href="/hang_left/right/">RIGHT</a></td>
+               </tr>
+               <tr>
+                   <td></td><td><a href="/hang_left/down/">DOWN</a></td><td></td>
+               </tr>
+           </table>
+        </td>
+    </tr>
+     <tr>
+        <td>RIGHT HAND </td>
+    </tr>
+    <tr>
+        <td>
+           <table>
+               <tr>
+                   <td></td><td><a href="/hang_right/up/">UP</a></td><td></td>
+               </tr>
+               <tr>
+                   <td><a href="/hang_right/left/">LEFT</a></td><td><a href="/hang_right/center/">CENTER</a></td><td><a href="/hang_right/right/">RIGHT</a></td>
+               </tr>
+               <tr>
+                   <td></td><td><a href="/hang_right/down/">DOWN</a></td><td></td>
+               </tr>
+           </table>
+        </td>
+    </tr>
+    <tr>
+        <td>HEAD</td>
+    </tr>
+    <tr>
+        <td>
+           <table>
+               <tr>
+                   <td></td><td><a href="/head/up/">UP</a></td><td></td>
+               </tr>
+               <tr>
+                   <td><a href="/head/left/">LEFT</a></td><td><a href="/head/center/">CENTER</a></td><td><a href="/head/right/">RIGHT</a></td>
+               </tr>
+               <tr>
+                   <td></td><td><a href="/head/down/">DOWN</a></td><td></td>
+               </tr>
+           </table>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3"><a href="/head/up_manual/">T - MANUAL UP </a></td>
+    </tr>
+    <tr>
+        <td colspan="3"><a href="/head/down_manual/">B - MANUAL DOWN</a></td>
+    </tr>
+    <tr>
+        <td colspan="3"><a href="/head/left_manual/">F - NECK MANUAL LEFT </a></td>
+    </tr>
+    <tr>
+        <td colspan="3"><a href="/head/right_manual/">H - NECK MANUAL RIGHT</a></td>
+    </tr>
+    <tr>
+        <td colspan="3" align="Center"><a href="/head/off/">OFF</a></td>
+    </tr>
+    <tr>
+        <td>hands functions</td>
+    </tr>
+    <tr>
+        <td colspan="3" align="Center"><a href="/hands/up/">UP HANDS</a></td>
+    </tr>
+    <tr>
+        <td colspan="3" align="Center"><a href="/hands/down/">DOWN hands</a></td>
+    </tr>
+    <tr>
+        <td colspan="3" align="Center"><a href="/hands/open/">OPEN HANDS</a></td>
+    </tr>
+    <tr>
+        <td colspan="3" align="Center"><a href="/hands/aplaudir">APLAUDIR</a></td>
+    </tr>
+    <tr>
+        <td colspan="3" align="Center"><a href="/hands/mentada">MENTADA</a></td>
+    </tr>
+    <tr>
+        <td colspan="3" align="Center"><a href="/head/yes">HEAD YES </a></td>
+    </tr>
+    <tr>
+        <td colspan="3" align="Center"><a href="/head/no">HEAD NO </a></td>
+    </tr>
+    <tr>
+        <td colspan="3" align="Center"><a href="/sensors/temperature/">SENSORS DE TEMPERATURA</a></td>
+    </tr>
+    <tr>
+        <td>MOVES ACTIONS</td>
+    </tr>
+    <tr>
+        <td colspan="3" align="Center"><a href="/moves/circle/">CIRCLE</a></td>
+    </tr>
+    <tr>
+        <td colspan="3" align="Center"><a href="/moves/front_sensor/">FRONT STOP WITH SENSOR</a></td>
+    </tr>
+    <tr>
+        <td colspan="3" align="Center"><a href="/video/">VIDEO</a></td>
+    </tr>
+    <tr>
+        <td colspan="3" align="Center"><a href="/alloff/">ALL OFF</a></td>
+    </tr>
+
+
+</table>
+</body>
+</html>

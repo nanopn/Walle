@@ -1,0 +1,27 @@
+(dp0
+Vbirthday
+p1
+V18/1/2015
+p2
+sVfather
+p3
+VHernan Pazos
+p4
+sVname
+p5
+Vwali
+p6
+sVmother
+p7
+VBarbara Martinez
+p8
+s.
+
+
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local \
+	-D PYTHON2_PACKAGES_PATH=~/.virtualenvs/walle/lib/python2.7/site-packages \
+	-D PYTHON2_LIBRARY=/usr/local/Cellar/python/2.7.10/Frameworks/Python.framework/Versions/2.7/bin \
+	-D PYTHON2_INCLUDE_DIR=/usr/local/Frameworks/Python.framework/Headers \
+	-D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON \
+	-D BUILD_EXAMPLES=ON \
+	-D OPENCV_EXTRA_MODULES_PATH=~/src/opencv/opencv_contrib/modules ..
